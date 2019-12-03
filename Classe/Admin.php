@@ -34,7 +34,7 @@
 					break;
 				
 				default://creer utilisateur
-					$User= new User($Name, $Surename, $Type, $ProfilId, $PresenceId);				
+					$User= new User();				
 					break;
 			}
 		}

@@ -3,6 +3,8 @@
 		private $Name, $Surename, $Type;
 		public $ProfilId, $PresenceId;
 
+		public function __construct(){
+		}
 		public function __construct($Name, $Surename, $Type, $ProfilId, $PresenceId){
 			$this->Name=$Name;
 			$this->Surname=$Surname;
