@@ -34,7 +34,9 @@
 					break;
 				
 				default://creer utilisateur
-					$User= new User();//a ester plustard				
+					$User= new User();//a ester plustard
+					$this->Modifier($User);
+					$User->ModifierProfil($Profil)			
 					break;
 			}
 		}
