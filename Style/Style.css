@@ -1,0 +1,23 @@
+#fieldset{
+	margin: auto;
+	width: 30%;
+}
+
+table{
+	margin: auto;
+	border: solid black 10px;
+	width: 80%;
+	text-align: center;
+}
+
+td, tr{
+	border: solid black 5px;
+}
+
+td{
+	width: 5%;
+}
+
+h1{
+	text-align:center;
+}
