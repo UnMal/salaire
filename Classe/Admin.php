@@ -34,7 +34,7 @@
 					break;
 				
 				default://creer utilisateur
-					$User= new User();				
+					$User= new User();//a ester plustard				
 					break;
 			}
 		}
