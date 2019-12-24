@@ -15,15 +15,13 @@
 			<input type="Password" name="Password" placeholder="votre Password"><br>
 			<input type="submit" name="submit" value="register"><br>
 			<?php
+				
 			?>
 			<a href="Tableau.php">tableau</a>
 		</form>
 	</fieldset>
 	<section style="text-align: center;">
 		<h1>test</h1>
-		<?php
-			echo 'mes tests';
-		?>
 	</section>
 
 </body>
