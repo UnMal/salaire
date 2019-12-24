@@ -1,6 +1,6 @@
 <?php
 
-	class User{
+	class User{//pb a resoudre
 		private $pseudo, $password;
 		public $PreseId, $ProjetId, $IdSceance;
 
