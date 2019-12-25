@@ -1,6 +1,5 @@
 <?php
-
-	class User{//pb a resoudre
+	class User{
 		private $pseudo, $password;
 		public $PreseId, $ProjetId, $IdSceance;
 
@@ -23,8 +22,8 @@
 			$this->password=$password;
 		}
 
-		public function ajouterprojet($title='valeurs eternelles', $description='appli internet de preparation de ceremonie de fin d annee', $asker='pasteur', $stat='Attente'){
-			require_once('Classe/bd.php');
+		public function ajouterprojet($title='valeurs eternelles', $description='appli internet de preparation de ceremonie de fin d annee', $asker='pasteur'){
+			require_once('bd.php');
 			$query=$pdo->prepare('INSERT INTO projet VALUES(:Title, :Description, :Asker, :Stat, :DateDebut');
 			$query->execute(array(
 				'Title'=>$title,
@@ -35,4 +34,6 @@
 			));
 		}
 	}
+	$user= new User('hermann','hermann');
+	$user->ajouterprojet();
 ?>
