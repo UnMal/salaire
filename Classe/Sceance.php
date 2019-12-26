@@ -1,23 +1,39 @@
 <?php
-	public class Sceance(){
+	class Sceance{
 		public $DateDebut,$DateFin;
 
 		public function __construct(){
-			$this->DateDebut=datetime();
+			$DateDebut=date('Y-m-d H-m-s');
+
+			$this->DateDebut=$DateDebut;
+
+			include_once('bd.php');
+
+			$req=$pdo->prepare('INSERT INTO Sceance (DateDebuT) VALUES (:DateDebuT)');
+			$req->execute(array(
+				'DateDebuT' => $DateDebut
+			));
 		}
 
-		public function getDateDebut(){
+		//setters begin
+		public function SetDateFin(){
+			$DateFin=date('Y-m-d H-m-s');
+			$this->DateFin=$DateFin;
+
+			include_once('bd.php');
+
+			$req = $pdo->prepare('INSERT INTO Sceance (DateFin) VALUES (:DateFin)');
+			$req->execute(array(
+				'DateFin' => $DateFin
+			));
+		}//setters end
+
+		//getters begin
+		public function GetDateDebut(){
 			return $this->DateDebut;
 		}
-		public function getDateFin(){
+		public function GetDateFin(){
 			return $this->DateFin;
-		}
-
-		public function setDateDebut(){
-			$this->DateDebut=$DateDebut;
-		}
-		public function setDateFin(){
-			$this->DateFin=$DateFin;
 		}
 	}
 ?>

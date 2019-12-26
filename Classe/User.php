@@ -1,39 +1,18 @@
 <?php
 	class User{
+		//déclaration de variables
 		private $pseudo, $password;
-		public $PreseId, $ProjetId, $IdSceance;
 
-		public function __construct($pseudo, $password){
+		public function Getpseudo($id){
+			include_once('bd.php');
+			$req = $pdo->prepare('SELECT pseudo from user where :UserId=?');
+			$pseudo=$req->execute(array('UserId'=>$id));
 			$this->pseudo=$pseudo;
-			$this->password=$password;
-		}
-
-		public function getpseudo(){
 			return $this->pseudo;
 		}
-		public function getpassword(){
-			return $this->password;
-		}
-
-		public function setpseudo($pseudo){
-			$this->pseudo=$pseudo;
-		}
-		public function setpassword($password){
-			$this->password=$password;
-		}
-
-		public function ajouterprojet($title='valeurs eternelles', $description='appli internet de preparation de ceremonie de fin d annee', $asker='pasteur'){
-			require_once('bd.php');
-			$query=$pdo->prepare('INSERT INTO projet VALUES(:Title, :Description, :Asker, :Stat, :DateDebut');
-			$query->execute(array(
-				'Title'=>$title,
-				'Description'=>$description,
-				'Asker'=>$asker,
-				'Stat'=>$stat,
-				'DateDebut'=>datetime()
-			));
-		}
 	}
-	$user= new User('hermann','hermann');
-	$user->ajouterprojet();
+
+	$tempo = new User();
+
+	$tempo->Getpseudo(2);
 ?>
