@@ -34,6 +34,6 @@
 		}
 		public function GetDateFin(){
 			return $this->DateFin;
-		}
+		}//getters end
 	}
 ?>
