@@ -10,9 +10,14 @@
 			$this->pseudo=$pseudo;
 			return $this->pseudo;
 		}
+		public function Getpassword($id){
+			include_once('bd.php');
+			$req = $pdo->prepare('SELECT password from user where :password=?');
+			$pseudo=$req->execute(array('password'=>$id));
+			$this->password=$password;
+			return $this->password;
+		}
 	}
 
-	$tempo = new User();
-
-	$tempo->Getpseudo(2);
+	
 ?>
