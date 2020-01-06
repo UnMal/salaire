@@ -4,27 +4,43 @@
 		private $pseudo, $password;
 		
 		public function __construct(){
-
 		}
-
+		//getters begins
 		public function Getpseudo(){
 			include_once('bd.php');
-			$req = $pdo->prepare('SELECT pseudo from user');
-			$req->execute();
-			$res=$req->fetch(PDO::FETCH_OBJ);
-			return $res;
+			$req = $pdo->query('SELECT pseudo from user;');
+			$Data = $req->fetch();
+			$this->pseudo = $Data['pseudo'];
+			return $this->pseudo;
 		}
-		public function Getpassword($id){
+		public function Getpassword(){
 			include_once('bd.php');
-			$req = $pdo->prepare('SELECT password from user where :password=?');
-			$pseudo=$req->execute(array('password'=>$id));
-			$this->password=$password;
+			$req = $pdo->query('SELECT password from user;');
+			$Data = $req->fetch();
+			$this->password = $Data['password'];
 			return $this->password;
-		}
-	}
-<<<<<<< Updated upstream
+		}//getters end
 
-	
-=======
->>>>>>> Stashed changes
+		public function CreerProjet($Title, $Description, $Asker){
+			include_once('Projet.php');
+			$Projet = new Projet($Title, $Description, $Asker);
+		}
+		public function AfficherProjet(){
+			include_once('bd.php');
+			include_once('Projet.php');
+			$req = $pdo->query('SELECT * from projet;');
+			$Data = $req->fetchAll();
+			return $Data;
+		/** code coté vue utilisateur
+		$test = new User();
+		$Data = $test->AfficherProjet();
+		foreach ($Data as $key => $value) {
+		echo '| '.$value['Title'].' | '.$value['Description'].' | '.$value['Asker'].' | '.$value['Stat'].' | '.$value['DateDebut'].' |';
+		}**/
+		}
+		public function ModifierProjet(){
+			include_once('Projet.php');
+		}
+
+	}
 ?>
