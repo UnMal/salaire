@@ -1,6 +1,6 @@
 <?php
 	class Projet{
-		private $Title, $Description, $Asker, $Stat, $DateDebut, $DateFin;
+		private $Title, $Description, $Asker, $Stat, $DateDebut, $Datefin;
 
 		public function __construct($Title, $Description, $Asker){
 			$DateDebut=date('Y-m-d');
@@ -79,6 +79,16 @@
 			$req=$pdo->prepare('INSERT INTO Projet (Stat) VALUES (:Stat)');
 			$req->execute(array(
 				'Stat'=>$Stat
+			));
+		}
+		public function SetDatefin($Datefin){
+			$this->Datefin=$Datefin;
+
+			include_once('bd.php');
+
+			$req=$pdo->prepare('INSERT INTO Projet (Datefin) VALUES (:Datefin)');
+			$req->execute(array(
+				'Datefin'=>$Datefin
 			));
 		}//setters end
 	}

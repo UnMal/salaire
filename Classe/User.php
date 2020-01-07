@@ -38,9 +38,17 @@
 		echo '| '.$value['Title'].' | '.$value['Description'].' | '.$value['Asker'].' | '.$value['Stat'].' | '.$value['DateDebut'].' |';
 		}**/
 		}
-		public function ModifierProjet(){
+		public function ModifierProjet($Projet, $Title, $Description, $Asker, $Stat, $DateDebut){
 			include_once('Projet.php');
 		}
-
+		public function ModifierDateFin($Projet, $Datefin){
+			include_once('Projet.php');			
+		}
 	}
+
+	$test = new User();
+	$test1 = new User();
+
+	$test->ModifierProjet($test1, $description);
+	$test->ModifierProjet($Projet, $description, $Title);
 ?>
