@@ -83,11 +83,6 @@
 		}
 		public function CalculerSalaire($Bail, $Workers, $TotalPoint){
 			require('Salaire.php');
-			$Salaire = new Salaire($Bail, $Workers, $TotalPoint);
-			$Salaire->Tech();
-			$Salaire->Individuel($APartager);
-			$Salaire->MaxIndividuel($Individuel);
-			$Salaire->Sal();
 		}
 	}
 	
