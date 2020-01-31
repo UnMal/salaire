@@ -3,7 +3,7 @@
 		public $DateDebut,$DateFin;
 
 		public function __construct(){
-			$DateDebut=date('Y-m-d H-m-s');
+			$DateDebut=datetime('Y-m-d H-m-s');
 
 			$this->DateDebut=$DateDebut;
 
@@ -17,14 +17,16 @@
 
 		//setters begin
 		public function SetDateFin(){
-			$DateFin=date('Y-m-d H-m-s');
+			$DateFin=datetime('Y-m-d H-m-s');
 			$this->DateFin=$DateFin;
+			$DateDebut = $this->DateDebut;
 
-			include_once('bd.php');
+			require('bd.php');
 
-			$req = $pdo->prepare('INSERT INTO Sceance (DateFin) VALUES (:DateFin)');
+			$req = $pdo->prepare('update Sceance DateFin = :DateFin where DateDebuT = :DateDebut');
 			$req->execute(array(
-				'DateFin' => $DateFin
+				'DateFin' => $DateFin,
+				'DateDebut' => $DateDebut
 			));
 		}//setters end
 

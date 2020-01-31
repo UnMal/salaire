@@ -5,7 +5,7 @@
 
 		//constructeur avec insertion en base de données
 		public function __construct($Assiduite, $Debut, $Participation, $Discipline, $Fin){
-			$Date = date('Y-m-d');
+			$Date = date('Y-m-d H-m-s');
 			$this->Assiduite=$Assiduite;
 			$this->Debut=$Debut;
 			$this->Participation=$Participation;
@@ -31,7 +31,7 @@
 
 			include_once('bd.php');//connexion a la base de données
 
-			$req=$pdo->prepare('INSERT INTO presence (Assiduite) VALUES (:Assiduite');
+			$req=$pdo->prepare('UPDATE presence Assiduite = :Assiduite');
 			$req->execute(array(
 				'Assiduite'=>$Assiduite
 			));
@@ -42,7 +42,7 @@
 
 			include_once('bd.php');//connexion a la base de données
 
-			$req=$pdo->prepare('INSERT INTO presence (Debut) VALUES (:Debut');
+			$req=$pdo->prepare('UPDATE presence Debut = :Debut');
 			$req->execute(array(
 				'Debut'=>$Debut
 			));
@@ -53,7 +53,7 @@
 
 			include_once('bd.php');//connexion a la base de données
 
-			$req=$pdo->prepare('INSERT INTO presence (Participation) VALUES (:Participation');
+			$req=$pdo->prepare('UPDATE presence Participation = :Participation');
 			$req->execute(array(
 				'Participation'=>$Participation
 			));
@@ -64,7 +64,7 @@
 
 			include_once('bd.php');//connexion a la base de données
 
-			$req=$pdo->prepare('INSERT INTO presence (Discipline) VALUES (:Discipline');
+			$req=$pdo->prepare('UPDATE presence Discipline = :Discipline');
 			$req->execute(array(
 				'Discipline'=>$Discipline
 			));
@@ -75,7 +75,7 @@
 
 			include_once('bd.php');//connexion a la base de données
 
-			$req=$pdo->prepare('INSERT INTO presence (Fin) VALUES (:Fin');
+			$req=$pdo->prepare('UPDATE presence Fin = :Fin');
 			$req->execute(array(
 				'Fin'=>$Fin
 			));

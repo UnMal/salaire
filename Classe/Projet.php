@@ -1,19 +1,19 @@
 <?php
 	class Projet{
-		private $Title, $Description, $Asker, $Stat, $DateDebut, $Datefin;
+		private $Title, $Description, $Asker, $Stat, $DateDebut, $DateFin;
 
 		public function __construct($Title, $Description, $Asker){
-			$DateDebut=date('Y-m-d');
+			$DateDebut=date('Y-m-d H-m-s');
 			$Stat='Attente';
 			$this->Title=$Title;
 			$this->Description=$Description;
 			$this->Asker=$Asker;
 			$this->Stat=$Stat;
 			$this->DateDebut=$DateDebut;
-
 			include_once('bd.php');
 
-			$req=$pdo->prepare('insert into Projet (Title, Description, Asker, Stat, DateDebut) values (:Title, :description, :Asker, :Stat, :DateDebut)');
+			$req=$pdo->prepare('insert into 
+Projet (Title, Description, Asker, Stat, DateDebut) values (:Title, :description, :Asker, :Stat, :DateDebut)');
 			$req->execute(array(
 				'Title'=>$Title,
 				'description'=>$Description,
@@ -38,6 +38,9 @@
 		}
 		public function GetDateDebut(){
 			return $this->DateDebut;
+		}
+		public function GetDateFin(){
+			return $this->DateFin;
 		}//getters end
 
 		//setters begin
@@ -46,7 +49,7 @@
 
 			include_once('bd.php');
 
-			$req=$pdo->prepare('INSERT INTO Projet (Title) VALUES (:Title)');
+			$req=$pdo->prepare('update Projet Title = :Title');
 			$req->execute(array(
 				'Title'=>$Title
 			));
@@ -56,7 +59,7 @@
 
 			include_once('bd.php');
 
-			$req=$pdo->prepare('INSERT INTO Projet (description) VALUES (:description)');
+			$req=$pdo->prepare('update Projet description = :description');
 			$req->execute(array(
 				'description'=>$description
 			));
@@ -66,7 +69,7 @@
 
 			include_once('bd.php');
 
-			$req=$pdo->prepare('INSERT INTO Projet (Asker) VALUES (:Asker)');
+			$req=$pdo->prepare('update Projet Asker = :Asker');
 			$req->execute(array(
 				'Asker'=>$Asker
 			));
@@ -76,19 +79,22 @@
 
 			include_once('bd.php');
 
-			$req=$pdo->prepare('INSERT INTO Projet (Stat) VALUES (:Stat)');
+			$req=$pdo->prepare('update Projet Stat = :Stat');
 			$req->execute(array(
 				'Stat'=>$Stat
 			));
 		}
-		public function SetDatefin($Datefin){
-			$this->Datefin=$Datefin;
+		public function SetDatefin($Title){
 
-			include_once('bd.php');
+			$DateFin=date('Y-m-d H-m-s');
+			$this->DateFin=$DateFin;
 
-			$req=$pdo->prepare('INSERT INTO Projet (Datefin) VALUES (:Datefin)');
+			require('bd.php');
+			$req=$pdo->prepare('update projet set DateFin = :DateFin where Title = :Title');
+
 			$req->execute(array(
-				'Datefin'=>$Datefin
+				'DateFin'=>$DateFin,
+				'Title' =>$Title
 			));
 		}//setters end
 	}
