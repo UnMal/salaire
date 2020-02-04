@@ -1,6 +1,6 @@
 <?php
 	class Salaire{
-		public $Bail, $TotalPoint, $Tech, $APartager, $Workers, $Individuel, $ATravailler, $max;
+		public $Bail, $TotalPoint, $Tech, $APartager, $Workers, $Commun, $ATravailler, $max;
 
 		public function __construct($Bail, $Workers, $TotalPoint){
 			$this->Bail = $Bail;
@@ -15,14 +15,30 @@
 			return $this->APartager = $res - $Tech;
 		}
 
-		public function Individuel($APartager){
-			return $this->Individuel = (($APartager * 2)/100);
+		public function Commun(){
+			$APartager = $this->APartager;
+			return $this->Commun = (($APartager * 2)/100);
 		}//salaire minimum par employé
 
-		public function MaxIndividuel($Individuel){
+		public function MaxIndividuel(){
+			$Commun = $this->Commun;
 			$work = $this->Workers;
-			$this->ATravailler = $this->APartager - ($this->Individuel*$work);
+			$this->ATravailler = $this->APartager - ($this->Commun*$work);
 			return $this->max = $this->ATravailler/$work;
 		}//retourne la somme max que chaque individu peut travailler
-	}/*effectuer toutes les transactions en une fonction pour la classe salaire*/
+
+		public function Individuel( $PointsInd){
+			$max = $this->max;
+			$PointMaxInd = ($this->TotalPoint/$this->Workers);
+			return $SalaireInd = $this->Commun + (($this->max * $PointsInd) / $PointMaxInd);
+		}//retourne le salaire individuel
+
+		public function Salaire($PointsInd){			
+			$this->Tech();
+			$this->Commun();
+			$this->MaxIndividuel();
+			return $this->Individuel( $PointsInd);
+		}//appell toute les fonctions pour calculer le salaire individuel en une ligne
+		//roud($val,-3);
+	}
 ?>
