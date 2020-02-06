@@ -1,0 +1,6 @@
+<?php
+	/*
+	* traitements d'authentification
+	*/
+
+?>

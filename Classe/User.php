@@ -81,8 +81,10 @@
 		public function FermerProjete($Projet){
 			$Projet->SetDateFin($Projet->Title);
 		}
-		public function CalculerSalaire($Bail, $Workers, $TotalPoint){
+		public function CalculerSalaire($Bail, $Workers, $TotalPoint, $PointsInd){
 			require('Salaire.php');
+			$salaire = new Salaire($Bail, $Workers, $TotalPoint);
+			$salaire->Salaire($PointsInd);
 		}
 	}
 	

@@ -37,8 +37,8 @@
 			$this->Tech();
 			$this->Commun();
 			$this->MaxIndividuel();
-			return $this->Individuel( $PointsInd);
-		}//appell toute les fonctions pour calculer le salaire individuel en une ligne
-		//roud($val,-3);
+			return round($this->Individuel($PointsInd),-2);
+		}/*appell toute les fonctions pour calculer le salaire individuel en une ligne
+		roud($val,-3);*/
 	}
 ?>
