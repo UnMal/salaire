@@ -3,23 +3,20 @@
 		private $Title, $Description, $Asker, $Stat, $DateDebut, $DateFin;
 
 		public function __construct($Title, $Description, $Asker){
-			$DateDebut=date('Y-m-d H-m-s');
 			$Stat='Attente';
 			$this->Title=$Title;
 			$this->Description=$Description;
 			$this->Asker=$Asker;
 			$this->Stat=$Stat;
-			$this->DateDebut=$DateDebut;
 			include_once('bd.php');
 
 			$req=$pdo->prepare('insert into 
-Projet (Title, Description, Asker, Stat, DateDebut) values (:Title, :description, :Asker, :Stat, :DateDebut)');
+Projet (Title, Description, Asker, Stat) values (:Title, :description, :Asker, :Stat)');
 			$req->execute(array(
 				'Title'=>$Title,
 				'description'=>$Description,
 				'Asker'=>$Asker,
 				'Stat'=>$Stat,
-				'DateDebut'=>$DateDebut
 			));
 		}
 

@@ -26,7 +26,7 @@
 			$Projet = new Projet($Title, $Description, $Asker);
 		}
 		public function AfficherProjets(){
-			include_once('bd.php');
+			require('bd.php');
 			$req = $pdo->query('SELECT * from projet;');
 			$Data = $req->fetchAll();
 			return $Data;
@@ -36,6 +36,18 @@
 		foreach ($Data as $key => $value) {
 		echo '| '.$value['Title'].' | '.$value['Description'].' | '.$value['Asker'].' | '.$value['Stat'].' | '.$value['DateDebut'].' |';
 		}**/
+		}
+		public function AfficherProjetsEnCour(){
+			require('bd.php');
+			$req = $pdo->query("SELECT * from projet where Stat = 'Cour';");
+			$Data = $req->fetchAll();
+			return $Data;
+		}
+		public function AfficherProjetsTermine(){
+			require('bd.php');
+			$req = $pdo->query("SELECT * from projet where Stat = 'Clos';");
+			$Data = $req->fetchAll();
+			return $Data;
 		}
 		public function ModifierProjet($Projet, $Title, $Description, $Asker, $Stat){
 			require('bd.php');
@@ -58,6 +70,11 @@
 			$Title = $Projet->GetTitle();
 			$req = $pdo->prepare('delete from projet where Title = :Title');
 			$req->execute(array('Title' => $Title));
+		}
+		public function LancerProjet($Projet){
+				$Projet['DateDebut'] = date('Y-m-d H-m-s');
+				$_SESSION['Projet'] = $Projet;
+				header('location:#');
 		}
 		public function OuvrirProjet($Projet){
 				$_SESSION['Projet'] = $Projet;
@@ -87,9 +104,6 @@
 			$salaire->Salaire($PointsInd);
 		}
 	}
-	
-	/**include('Projet.php');
-	$test = new User();
-	$ptest = new Projet('td','ghvghn','hfvh','Attente');
-	$test->SupprimerProjet($ptest);**/
+
+	$user = new User();
 ?>

@@ -1,4 +1,4 @@
 <?php
 	echo "erreur";
-	header('Refresh: 2; URL= ../../index.php');
+	header('Refresh: 0.3; URL= ../../index.php');
 ?>
