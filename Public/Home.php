@@ -44,6 +44,14 @@
 		<h1>liste de projet</h1>
 		<?php
 			$Data = $user->AfficherProjets();
+				echo '<table>
+						<tr>
+							<td> TITRE </td>
+							<td> DESCRIPTION </td>
+							<td> DEMANDEUR </td>
+							<td> STATUT </td>
+						</tr>
+					</table>';
 			foreach ($Data as $key => $value){
 				echo '<table>
 						<tr>
@@ -62,6 +70,15 @@
 		<h1>liste de projet en cour</h1>
 		<?php
 			$Data = $user->AfficherProjetsEnCour();
+				echo '<table>
+						<tr>
+							<td> TITRE </td>
+							<td> DESCRIPTION </td>
+							<td> DEMANDEUR </td>
+							<td> STATUT </td>
+							<td> DATE DEBUT </td>
+						</tr>
+					</table>';
 			foreach ($Data as $key => $value){
 				echo '<table>
 						<tr>
@@ -80,6 +97,16 @@
 		<h1>liste de projet terminér</h1>
 		<?php
 			$Data = $user->AfficherProjetsTermine();
+				echo '<table>
+						<tr>
+							<td> TITRE </td>
+							<td> DESCRIPTION </td>
+							<td> DEMANDEUR </td>
+							<td> STATUT </td>
+							<td> DATE DEBUT </td>
+							<td> DATE FIN </td>
+						</tr>
+					</table>';
 			foreach ($Data as $key => $value){
 				echo '<table>
 						<tr>
